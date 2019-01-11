@@ -10,6 +10,7 @@ $webhook_data = json_decode(file_get_contents('php://input'),true);
 $action = $webhook_data['queryResult']['action'];
 
 $answer=[
-    'method'=>$action
+    'speech'=>$action,
+    'displayText'=>$action
 ];
 echo(json_encode($answer));
