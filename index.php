@@ -13,8 +13,8 @@ $answer=[[
     'speech'=>$action,
     'displayText'=>$action
 ]];
-echo('
-"message": {
+echo('[
+{
 "speech": "this text is spoken out loud if the platform supports voice interactions",
 "displayText": "this text is displayed visually" }
-');
+]');
