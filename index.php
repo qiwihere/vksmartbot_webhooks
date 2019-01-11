@@ -1,6 +1,6 @@
 <?php
-$login = 'testwh';
-$pass = 'testwh';
+$login = 'Test';
+$pass = 'kek';
 
 //auth
 if($login != $_SERVER['PHP_AUTH_USER'] or $pass != $_SERVER['PHP_AUTH_PW']) die();
