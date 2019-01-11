@@ -1,14 +1,14 @@
 <?php
+$login = 'testwh';
+$pass = 'testwh';
 
+//auth
+if($login != $_SERVER['PHP_AUTH_USER'] or $pass != $_SERVER['PHP_AUTH_PW']) die();
 
+ob_start();
+var_dump($_REQUEST);
+$data = ob_get_clean();
 
-if (!isset($_SERVER['PHP_AUTH_USER'])) {
-    header('WWW-Authenticate: Basic realm="My Realm"');
-    header('HTTP/1.0 401 Unauthorized');
-    echo 'Текст, отправляемый в том случае,
-    если пользователь нажал кнопку Cancel';
-    exit;
-} else {
-    echo "<p>Hello {$_SERVER['PHP_AUTH_USER']}.</p>";
-    echo "<p>Вы ввели пароль {$_SERVER['PHP_AUTH_PW']}.</p>";
-}
+file_put_contents('log.txt',$data,FILE_APPEND);
+
+echo(file_get_contents('log.txt'));
