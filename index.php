@@ -12,3 +12,4 @@ $action = $webhook_data['queryResult']['action'];
 $answer=[
     'method'=>$action
 ];
+echo(json_encode($answer));
