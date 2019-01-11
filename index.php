@@ -6,7 +6,7 @@ $pass = 'kek';
 if($login != $_SERVER['PHP_AUTH_USER'] or $pass != $_SERVER['PHP_AUTH_PW']) die();
 
 ob_start();
-var_dump($_POST);
+var_dump(file_get_contents('php://input'));
 $data = ob_get_clean();
 
 file_put_contents('log.txt',$data,FILE_APPEND);
