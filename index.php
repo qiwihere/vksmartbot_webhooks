@@ -1,5 +1,5 @@
 <?php
-$login = 'Test';
+$login = 'test';
 $pass = 'kek';
 
 //auth
