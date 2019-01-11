@@ -13,9 +13,6 @@ $answer=[[
     'speech'=>$action,
     'displayText'=>$action
 ]];
-echo('
-{
+echo('{
   fulfillmentText: "heh",
-  source: "EchoService"
-}
-');
+ }');
