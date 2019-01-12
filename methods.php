@@ -2,16 +2,12 @@
 
 function get_weather($city)
 {
-    $im_p = json_decode(file_get_contents('https://htmlweb.ru/service/api.php?inflect='.$city.'&json&info'),true);
-    foreach($im_p as $word_p)
-    {
-        if ($word_p['partofspeech'] == "C") {
-            $word = $word_p['word'];
-            break;
-        }
-    }
+    $im_p = json_decode(
+        file_get_contents('https://htmlweb.ru/service/api.php?inflect='.$city.'&json&partofspeech=С'),
+        true
+    );
     $answer='{
-        "fulfillmentText": "'.$word.'",
+        "fulfillmentText": "'.$im_p[0].'",
         "source": "EchoService"
     }';
     echo($answer);
