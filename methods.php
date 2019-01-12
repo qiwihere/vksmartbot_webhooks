@@ -15,9 +15,9 @@ function get_weather($city)
 
         if(stristr($val['value'],$imp_city))
         {
-            if($vals[$k]['attributes']['REGION'])
+            if($vals[$k]['attributes']['ID'])
             {
-                $city_id = $vals[$k]['attributes']['ID'];
+                $city_id = $vals[$k]['attributes']['REGION'];
             }
 
         }
