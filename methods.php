@@ -60,11 +60,11 @@ function get_weather($region)
     }
 
     $template = '
-        Сейчас на улице '.$arr_weather['now']['type'].', скорость ветра достигает '.$arr_weather['now']['wind_speed'].' м/c, направление ветра: '.$arr_weather['now']['wind_direction'].', температура воздуха: '.$arr_weather['now']['temperature'].'\n
-        Утро: '.$arr_weather['morning']['temperature'].',\n
-        День: '.$arr_weather['daytime']['temperature'].',\n
-        Вечер: '.$arr_weather['evening']['temperature'].',\n
-        Утро: '.$arr_weather['night']['temperature'].',\n
+        <b>Сейчас</b> на улице '.$arr_weather['now']['type'].', скорость ветра достигает '.$arr_weather['now']['wind_speed'].' м/c, направление ветра: '.$arr_weather['now']['wind_direction'].', температура воздуха: '.$arr_weather['now']['temperature'].'\n
+        <b>Утро:</b> '.$arr_weather['morning']['temperature'].',
+        <b>День:</b> '.$arr_weather['daytime']['temperature'].',
+        <b>Вечер:</b> '.$arr_weather['evening']['temperature'].',
+        <b>Утро:</b> '.$arr_weather['night']['temperature'].',
     ';
 
     $answer='{
