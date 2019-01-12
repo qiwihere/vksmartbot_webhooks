@@ -12,6 +12,8 @@ $webhook_data = json_decode(file_get_contents('php://input'),true);
 $action = $webhook_data['queryResult']['action'];
 
 
-
+if($action=='weather')
+{
     $city = $webhook_data['queryResult']['parameters']['city'];
     get_weather($city);
+}

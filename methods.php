@@ -21,7 +21,7 @@ function get_weather($city)
         }
     }
     $answer='{
-        "fulfillmentText": "'.$city_id.'",
+        "fulfillmentText": "'.$imp_city.'",
         "source": "EchoService"
     }';
     echo($answer);
