@@ -13,16 +13,18 @@ function get_weather($city)
     foreach($vals as $k=>$val)
     {
 
-        if(stristr(strtolower($val['value']),strtolower($imp_city)))
+        if(stristr($val['value'],$imp_city))
         {
-
-            $city_id = $vals[$k]['attributes']['ID'];
+            if($vals[$k]['attributes']['ID'])
+            {
+                $city_id = $vals[$k]['attributes']['ID'];
+            }
 
         }
     }
     $answer='{
-        "fulfillmentText": "'.$imp_city.'",
+        "fulfillmentText": "'.$city_id.'",
         "source": "EchoService"
     }';
     echo($answer);
-}
+}.
