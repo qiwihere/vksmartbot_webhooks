@@ -27,4 +27,4 @@ function get_weather($city)
         "source": "EchoService"
     }';
     echo($answer);
-}.
+}
