@@ -3,7 +3,7 @@
 function get_weather($city)
 {
     //город без падежа
-     $imp_city = substr($city, 0, -1);
+    $imp_city = substr($city, 0, -1);
     //код города
     $xml_cities = file_get_contents('https://pogoda.yandex.ru/static/cities.xml');
     $p = xml_parser_create();
@@ -13,7 +13,7 @@ function get_weather($city)
     foreach($vals as $k=>$val)
     {
 
-        if(stristr($val['value'],$imp_city))
+        if(stristr(strtolower($val['value']),strtolower($imp_city)))
         {
 
             $city_id = $vals[$k]['attributes']['ID'];
