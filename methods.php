@@ -14,7 +14,7 @@ function get_region_id($city)
     {
         $cur_city = strtolower($val['value']);
 
-        if(stristr($cur_city,$imp_city))
+        if(stristr($cur_city,$imp_city) or $imp_city==$cur_city)
         {
             if($vals[$k]['attributes']['ID'])
             {
