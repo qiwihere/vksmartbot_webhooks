@@ -7,5 +7,5 @@ function get_weather($city)
         "fulfillmentText": "'.$str_answ.'",
         "source": "EchoService"
     }';
-    echo(json_encode($answer));
+    echo($answer);
 }
