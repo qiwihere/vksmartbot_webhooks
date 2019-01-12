@@ -17,7 +17,7 @@ function get_weather($city)
 
     foreach($vals as $k=>$val)
     {
-        if(strtolower($val['value'])==strtolower($city))
+        if(strcasecmp($val['value'],trim($city)))
         {
             $city_id = $vals[$k]['attributes']['ID'];
             break;
