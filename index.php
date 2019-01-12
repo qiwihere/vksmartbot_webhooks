@@ -16,6 +16,6 @@ $action='weather';
 if($action=='weather')
 {
     $city = $webhook_data['queryResult']['parameters']['city'];
-    $city = 'Астана';
+    $city = $_GET['city'];
     get_weather($city);
 }
