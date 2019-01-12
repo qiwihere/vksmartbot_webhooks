@@ -53,15 +53,18 @@ function get_weather($region)
                 ];
             }else {
                 $arr_weather[$frame] = [
-                    'temperature'=>'От '.$weather_now["temperature_from"].' до '.$weather_now["temperature_to"]
+                    'temperature'=>'от '.$weather_now["temperature_from"].' до '.$weather_now["temperature_to"]
                 ];
             }
         }
     }
 
     $template = '
-        Сейчас на улице '.$arr_weather['now']['type'].', скорость ветра достигает '.$arr_weather['now']['wind_speed'].' м/c, направление ветра: '.$arr_weather['now']['wind_direction'].'\n,
-        температура воздуха: '.$arr_weather['now']['temperature'].'
+        Сейчас на улице '.$arr_weather['now']['type'].', скорость ветра достигает '.$arr_weather['now']['wind_speed'].' м/c, направление ветра: '.$arr_weather['now']['wind_direction'].', температура воздуха: '.$arr_weather['now']['temperature'].'\n
+        Утро: '.$arr_weather['morning']['temperature'].',\n
+        День: '.$arr_weather['daytime']['temperature'].',\n
+        Вечер: '.$arr_weather['evening']['temperature'].',\n
+        Утро: '.$arr_weather['night']['temperature'].',\n
     ';
 
     $answer='{
