@@ -7,7 +7,7 @@ function get_weather($city)
         file_get_contents('https://htmlweb.ru/service/api.php?inflect='.$city.'&json&partofspeech=С'),
         true
     );
-    $city = $im_p[0];
+    $imp_city = $im_p[0];
 
     //код города
     $xml_cities = file_get_contents('https://pogoda.yandex.ru/static/cities.xml');
@@ -17,14 +17,14 @@ function get_weather($city)
 
     foreach($vals as $k=>$val)
     {
-        if(strcasecmp($val['value'],trim($city)))
+        if(strcasecmp($val['value'],trim($imp_city)))
         {
             $city_id = $vals[$k]['attributes']['ID'];
             break;
         }
     }
     $answer='{
-        "fulfillmentText": "'.$city.'/'.$city_id.'",
+        "fulfillmentText": "'.$city_id.'",
         "source": "EchoService"
     }';
     echo($answer);
