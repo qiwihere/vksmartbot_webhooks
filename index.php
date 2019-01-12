@@ -16,5 +16,5 @@ $action = $webhook_data['queryResult']['action'];
 if($action=='weather')
 {
     $city = $webhook_data['queryResult']['parameters']['city'];
-    get_weather($city);
+    get_weather(get_region_id($city));
 }

@@ -1,6 +1,6 @@
 <?php
 
-function get_weather($city)
+function get_region_id($city)
 {
     //город без падежа
     $imp_city = substr($city, 0, -1);
@@ -17,13 +17,55 @@ function get_weather($city)
         {
             if($vals[$k]['attributes']['ID'])
             {
-                $city_id = $vals[$k]['attributes']['REGION'];
+                $region = $vals[$k]['attributes']['REGION'];
             }
 
         }
     }
+    return $region;
+}
+
+function get_weather($region)
+{
+    $path = 'https://export.yandex.ru/bar/reginfo.xml?region='.$region;
+    $xmlfile = file_get_contents($path);
+    $ob= simplexml_load_string($xmlfile);
+    $json  = json_encode($ob);
+    $configData = json_decode($json, true);
+
+    $day_frames = ['now','morning','daytime','evening','night'];
+    $weather = $configData['weather']['day']['day_part'];
+
+    foreach($day_frames as $k => $frame)
+    {
+        $weather_now = $weather[$k];
+        if($frame=='now') {
+            $arr_weather[$frame] = [
+                'type' => $weather_now['weather_type'],
+                'wind_speed' => $weather_now['wind_speed'],
+                'wind_direction' => $weather_now['wind_direction'],
+                'temperature' => $weather_now['temperature']
+            ];
+        }else {
+            if(array_key_exists('temperature',$weather_now)) {
+                $arr_weather[$frame] = [
+                    'temperature'=>$weather_now['temperature']
+                ];
+            }else {
+                $arr_weather[$frame] = [
+                    'temperature'=>'От '.$weather_now["temperature_from"].' до '.$weather_now["temperature_to"]
+                ];
+            }
+        }
+    }
+
+    $template = '
+        Сейчас на улице '.$arr_weather['now']['type'].', скорость ветра достигает '.$arr_weather['now']['wind_speed'].' м/c, направление ветра: '.$arr_weather['now']['wind_direction'].'\n,
+        температура воздуха: '.$arr_weather['now']['temperature'].'
+    ';
+
     $answer='{
-        "fulfillmentText": "'.$city_id.'",
+        "fulfillmentText": "'.$template.'",
         "source": "EchoService"
     }';
     echo($answer);
