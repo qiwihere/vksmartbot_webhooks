@@ -3,7 +3,7 @@
 function get_region_id($city)
 {
     //город без падежа
-    $imp_city = substr($city, 0, -1);
+    $imp_city = strtolower(substr($city, 0, -1));
     //код города
     $xml_cities = file_get_contents('https://pogoda.yandex.ru/static/cities.xml');
     $p = xml_parser_create();
@@ -12,8 +12,9 @@ function get_region_id($city)
 
     foreach($vals as $k=>$val)
     {
+        $cur_city = strtolower($val['value']);
 
-        if(stristr($val['value'],$imp_city))
+        if(stristr($cur_city,$imp_city))
         {
             if($vals[$k]['attributes']['ID'])
             {
