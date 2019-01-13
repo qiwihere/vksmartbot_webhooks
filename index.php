@@ -1,7 +1,7 @@
 <?php
 include('YandexWeather.php');
 include('Wikipedia.php');
-
+include('Giphy.php');
 $login = 'test';
 $pass = 'kek';
 
@@ -24,4 +24,10 @@ if($action=='wiki')
 {
     $query = $webhook_data['queryResult']['parameters']['query'];
     Wikipedia::Search($query);
+}
+
+if($action=='gif')
+{
+    $keywords = $webhook_data['queryResult']['parameters']['keywords'];
+    Giphy::get_gif($keywords);
 }
