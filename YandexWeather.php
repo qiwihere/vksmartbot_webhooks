@@ -60,9 +60,8 @@ class YandexWeather
         &#127763;Утро: ' . $arr_weather['morning']['temperature'] . ',
         &#127765;День: ' . $arr_weather['daytime']['temperature'] . ',
         &#127767;Вечер: ' . $arr_weather['evening']['temperature'] . ',
-        &#127761;Утро: ' . $arr_weather['night']['temperature'] . ',
-        
-        ID региона: ' . $region . '
+        &#127761;Ночь: ' . $arr_weather['night']['temperature'] . ',
+       
     ';
         if ($region == '') {
             $template = 'Ты уверен что такой город существует, и ты написал его с большой буквы?';
