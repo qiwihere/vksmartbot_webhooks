@@ -67,7 +67,10 @@ function get_weather($region)
         
         ID региона: '.$region.'
     ';
-
+    if($region=='')
+    {
+        $template='Ты уверен что такой город существует, и ты написал его с большой буквы?';
+    }
     $answer='{
         "fulfillmentText": "'.$template.'",
         "source": "EchoService"
