@@ -19,12 +19,11 @@ class Wikipedia
        $configData = json_decode($json, true);
        $arr_result = $configData['query']['search']['p'];
 
-       $answ='';
+
        foreach($arr_result as $result)
        {
             $part = $result['@attributes'];
-            $answ.='
-            &#9899;'.$part['title'].'
+            $answ.='&#9899;'.$part['title'].'
             '.strip_tags($part['snippet']).'
             &#127760;Подробнее: https://ru.wikipedia.org/wiki/'.str_replace(' ','_',$part['title']).'
             ';
