@@ -30,7 +30,9 @@ class Wikipedia
             ';
        }
        $answer = '{
-            "fulfillmentText": "' . $answ . '",
+            "fulfillmentText": "
+            ' . $answ . '
+            ",
             "source": "EchoService"
         }';
        echo($answer);
