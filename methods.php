@@ -4,7 +4,7 @@ function get_region_id($city)
 {
     //город без падежа
     $imp_city = strtolower(substr(substr($city, 0, -1),0,6));
-    print_r($imp_city);
+
     //код города
     $xml_cities = file_get_contents('https://pogoda.yandex.ru/static/cities.xml');
     $p = xml_parser_create();
