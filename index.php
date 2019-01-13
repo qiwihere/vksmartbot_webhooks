@@ -1,5 +1,6 @@
 <?php
 include('YandexWeather.php');
+include('Wikipedia.php');
 
 $login = 'test';
 $pass = 'kek';
@@ -17,4 +18,10 @@ if($action=='weather')
 {
     $city = $webhook_data['queryResult']['parameters']['city'];
     YandexWeather::get_weather(YandexWeather::get_region_id($city));
+}
+
+if($action=='wiki')
+{
+    $query = $webhook_data['queryResult']['parameters']['query'];
+    Wikipedia::Search($query);
 }
