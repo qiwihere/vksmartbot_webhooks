@@ -3,7 +3,7 @@
 function get_region_id($city)
 {
 
-    $imp_city = strtolower(substr($city, 0, -2));
+    $imp_city = substr($city, 0, -2);
     $xml_cities = file_get_contents('https://pogoda.yandex.ru/static/cities.xml');
     $p = xml_parser_create();
     xml_parse_into_struct($p, $xml_cities, $vals, $index);
@@ -11,8 +11,7 @@ function get_region_id($city)
 
     foreach($vals as $k=>$val)
     {
-        $cur_city = strtolower($val['value']);
-        echo($cur_city.'\n');
+        $cur_city = $val['value'];
         if(stristr($cur_city,$imp_city) or $imp_city==$cur_city)
         {
             if($vals[$k]['attributes']['ID'])
