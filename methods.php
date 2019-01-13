@@ -4,6 +4,7 @@ function get_region_id($city)
 {
 
     $imp_city = strtolower(substr(substr($city, 0, -1),0,6));
+    echo($imp_city.'<br>');
     $xml_cities = file_get_contents('https://pogoda.yandex.ru/static/cities.xml');
     $p = xml_parser_create();
     xml_parse_into_struct($p, $xml_cities, $vals, $index);
