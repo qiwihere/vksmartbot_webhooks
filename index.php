@@ -1,5 +1,5 @@
 <?php
-include('methods.php');
+include('YandexWeather.php');
 
 $login = 'test';
 $pass = 'kek';
@@ -16,5 +16,5 @@ $action = $webhook_data['queryResult']['action'];
 if($action=='weather')
 {
     $city = $webhook_data['queryResult']['parameters']['city'];
-    get_weather(get_region_id($city));
+    YandexWeather::get_weather(YandexWeather::get_region_id($city));
 }
