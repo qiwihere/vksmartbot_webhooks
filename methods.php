@@ -2,10 +2,8 @@
 
 function get_region_id($city)
 {
-    //город без падежа
-    $imp_city = strtolower(substr(substr($city, 0, -1),0,6));
 
-    //код города
+    $imp_city = strtolower(substr(substr($city, 0, -1),0,6));
     $xml_cities = file_get_contents('https://pogoda.yandex.ru/static/cities.xml');
     $p = xml_parser_create();
     xml_parse_into_struct($p, $xml_cities, $vals, $index);
@@ -67,6 +65,8 @@ function get_weather($region)
         &#127765;День: '.$arr_weather['daytime']['temperature'].',
         &#127767;Вечер: '.$arr_weather['evening']['temperature'].',
         &#127761;Утро: '.$arr_weather['night']['temperature'].',
+        
+        ID региона: '.$region.'
     ';
 
     $answer='{
