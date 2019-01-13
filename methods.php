@@ -2,7 +2,7 @@
 
 function get_region_id($city)
 {
-    $imp_city = substr($city, 0, -1);
+    $imp_city = substr($city, 0, strlen($city)-1);
     echo($imp_city.'/');
     $imp_city = strtolower(substr($imp_city,0,6));
     echo($imp_city.'/');
